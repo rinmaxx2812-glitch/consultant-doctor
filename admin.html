@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Consultant Doctor</title>
+    <link rel="shortcut icon" href="./logo copy.png" type="image/x-icon">
+    <link rel="stylesheet" href="admin.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <a href="index.html" class="logo">
+                    <div class="medical-logo"></div>
+                    <div class="logo-text-group">
+                        <span class="logo-text">Consultant <strong>Doctor</strong></span>
+                        <small>Admin Workspace</small>
+                    </div>
+                </a>
+
+                <nav class="side-nav">
+                    <a href="#patients-section" class="side-link active">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                        <span>Payments &amp; Patients</span>
+                        <span class="badge-count" id="sidebarPendingBadge">0</span>
+                    </a>
+                    <a href="admin_live_room.html" class="side-link">
+                        <i class="fa-solid fa-comments"></i>
+                        <span>Live Consultation</span>
+                    </a>
+                    
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="doctor-card">
+                    <div class="doctor-avatar">DL</div>
+                    <div class="doctor-meta">
+                        <strong>Dr. La Yaung</strong>
+                        <span><i class="fa-solid fa-circle"></i> Online</span>
+                    </div>
+                </div>
+                <a href="login.html" class="logout-btn" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- ================= MAIN CONTENT ================= -->
+        <div class="main-wrapper">
+            <!-- Top Header -->
+            <header class="topbar">
+                <div>
+                    <h1>Admin Dashboard</h1>
+                    <p class="topbar-sub">Verify KPay screenshots, approve patients, and conduct live consultations</p>
+                </div>
+                <div class="topbar-right">
+                    <div class="fee-pill">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                        <span>Fee: <strong>10,000 MMK</strong> (KPay)</span>
+                    </div>
+                    <a href="index.html" class="btn-light-outline">
+                        <i class="fa-solid fa-house"></i> Home Page
+                    </a>
+                </div>
+            </header>
+
+            <!-- Summary Stats -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
+                    <div>
+                        <span class="stat-label">Total Patients</span>
+                        <strong class="stat-value" id="statTotalPatients">0</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon amber"><i class="fa-solid fa-clock"></i></div>
+                    <div>
+                        <span class="stat-label">Pending Payments</span>
+                        <strong class="stat-value" id="statPendingPayments">0</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <span class="stat-label">Approved (Live Access)</span>
+                        <strong class="stat-value" id="statApprovedPatients">0</strong>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PATIENT & PAYMENT VERIFICATION ================= -->
+            <section id="patients-section" class="panel-card">
+                <div class="panel-header">
+                    <div>
+                        <h2>Patient Requests &amp; KPay Screenshots</h2>
+                        <p>Patient must be approved before entering the Live Room</p>
+                    </div>
+                    <span class="kpay-tag">KPay: 09688439797 &bull; MG Kaung</span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="patient-table">
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Phone Number</th>
+                                <th>Date &amp; Time</th>
+                                <th>Payment Screenshot</th>
+                                <th>Live Room Access</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ================= KPAY SETTINGS SUMMARY ================= -->
+            <section id="payment-info" class="panel-card">
+                <div class="panel-header">
+                    <div>
+                        <h2>KPay Receiving Account Settings</h2>
+                        <p>Active patient payment verification details</p>
+                    </div>
+                    <span class="kpay-tag">Consultation Fee: 10,000 MMK</span>
+                </div>
+                <p class="topbar-sub">
+                    KPay Number: <strong class="mono">09688439797</strong> &bull;
+                    Account Name: <strong>MG Kaung</strong> &bull;
+                    Doctor: <strong>Dr. La Yaung</strong>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <!-- ================= SCREENSHOT MODAL ================= -->
+    <div class="modal-backdrop" id="screenshotModal" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3 id="modalTitle">KPay Payment Screenshot</h3>
+                <button type="button" class="modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img id="modalScreenshotImg" src="" alt="Patient KPay Screenshot">
+            </div>
+        </div>
+    </div>
+
+    <script src="consultant-sync.js"></script>
+    <script>
+        // Redirect to login if admin session is not active
+        if (sessionStorage.getItem('consultant_admin_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        const patientTableBody = document.getElementById('patientTableBody');
+        const statTotalPatients = document.getElementById('statTotalPatients');
+        const statPendingPayments = document.getElementById('statPendingPayments');
+        const statApprovedPatients = document.getElementById('statApprovedPatients');
+        const sidebarPendingBadge = document.getElementById('sidebarPendingBadge');
+
+        const screenshotModal = document.getElementById('screenshotModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalScreenshotImg = document.getElementById('modalScreenshotImg');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        const fallbackImg = 'https://placehold.co/320x220/e0f2fe/0369a1?text=No+Screenshot+Uploaded';
+
+        function getInitials(name) {
+            return (name || 'PT')
+                .split(' ')
+                .filter(Boolean)
+                .slice(0, 2)
+                .map(w => w[0].toUpperCase())
+                .join('') || 'PT';
+        }
+
+        function openScreenshotModal(patient) {
+            modalTitle.textContent = `KPay Screenshot — ${patient.name} (${patient.phone})`;
+            modalScreenshotImg.src = patient.screenshotDataUrl || fallbackImg;
+            screenshotModal.classList.add('open');
+        }
+
+        function closeScreenshotModal() {
+            screenshotModal.classList.remove('open');
+            modalScreenshotImg.src = '';
+        }
+
+        closeModalBtn.addEventListener('click', closeScreenshotModal);
+        screenshotModal.addEventListener('click', (e) => {
+            if (e.target === screenshotModal) closeScreenshotModal();
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            sessionStorage.removeItem('consultant_admin_auth');
+        });
+
+        function renderAccessBadge(status) {
+            if (status === 'approved') {
+                return `
+                    <span class="status-badge unlocked">
+                        <i class="fa-solid fa-unlock"></i> Allowed in Live Room
+                    </span>
+                `;
+            }
+            if (status === 'rejected') {
+                return `
+                    <span class="status-badge locked">
+                        <i class="fa-solid fa-ban"></i> Rejected
+                    </span>
+                `;
+            }
+            if (status === 'pending') {
+                return `
+                    <span class="status-badge locked">
+                        <i class="fa-solid fa-hourglass-half"></i> Locked (Pending)
+                    </span>
+                `;
+            }
+            return `
+                <span class="status-badge locked">
+                    <i class="fa-solid fa-lock"></i> Locked (No Receipt)
+                </span>
+            `;
+        }
+
+        function renderActionButtons(patient) {
+            if (patient.paymentStatus === 'approved') {
+                return `
+                    <div class="action-buttons">
+                        <button type="button" class="btn-chat-select" data-open-room="${patient.id}">
+                            <i class="fa-solid fa-video"></i> Open Room
+                        </button>
+                    </div>
+                `;
+            }
+            return `
+                <div class="action-buttons">
+                    <button type="button" class="btn-approve" data-approve-id="${patient.id}">
+                        <i class="fa-solid fa-check"></i> Approve
+                    </button>
+                    <button type="button" class="btn-reject" data-reject-id="${patient.id}">
+                        <i class="fa-solid fa-xmark"></i> Reject
+                    </button>
+                </div>
+            `;
+        }
+
+        function renderAdminDashboard() {
+            const patients = ConsultantSync.getAllPatients();
+            const pendingCount = patients.filter(p => p.paymentStatus === 'pending').length;
+            const approvedCount = patients.filter(p => p.paymentStatus === 'approved').length;
+
+            statTotalPatients.textContent = patients.length;
+            statPendingPayments.textContent = pendingCount;
+            statApprovedPatients.textContent = approvedCount;
+            sidebarPendingBadge.textContent = pendingCount;
+
+            patientTableBody.innerHTML = '';
+
+            if (patients.length === 0) {
+                patientTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center; color:#6b7280; padding:24px;">
+                            No patient requests found yet.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            patients.forEach((patient) => {
+                const tr = document.createElement('tr');
+                if (patient.paymentStatus === 'approved') {
+                    tr.classList.add('row-approved');
+                }
+
+                const thumbSrc = patient.screenshotDataUrl || fallbackImg;
+
+                tr.innerHTML = `
+                    <td>
+                        <div class="patient-cell">
+                            <span class="avatar-sm ${patient.paymentStatus === 'approved' ? 'approved' : ''}">
+                                ${getInitials(patient.name)}
+                            </span>
+                            <strong>${patient.name}</strong>
+                        </div>
+                    </td>
+                    <td class="mono">${patient.phone}</td>
+                    <td>${patient.submittedAt || '-'}</td>
+                    <td>
+                        <button type="button" class="screenshot-preview-btn" data-view-id="${patient.id}">
+                            <img src="${thumbSrc}" alt="KPay Screenshot">
+                            <span><i class="fa-solid fa-magnifying-glass-plus"></i> View</span>
+                        </button>
+                    </td>
+                    <td>${renderAccessBadge(patient.paymentStatus)}</td>
+                    <td>${renderActionButtons(patient)}</td>
+                `;
+
+                patientTableBody.appendChild(tr);
+            });
+
+            // Bind screenshot preview buttons
+            patientTableBody.querySelectorAll('[data-view-id]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const state = ConsultantSync.loadState();
+                    const p = state.patients[btn.dataset.viewId];
+                    if (p) openScreenshotModal(p);
+                });
+            });
+
+            // Bind approve buttons
+            patientTableBody.querySelectorAll('[data-approve-id]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    ConsultantSync.setPaymentStatus(btn.dataset.approveId, 'approved');
+                    renderAdminDashboard();
+                });
+            });
+
+            // Bind reject buttons
+            patientTableBody.querySelectorAll('[data-reject-id]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    ConsultantSync.setPaymentStatus(btn.dataset.rejectId, 'rejected');
+                    renderAdminDashboard();
+                });
+            });
+
+            // Bind open room buttons
+            patientTableBody.querySelectorAll('[data-open-room]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const state = ConsultantSync.loadState();
+                    state.currentPatientId = btn.dataset.openRoom;
+                    localStorage.setItem('consultant_doctor_state_v1', JSON.stringify(state));
+                    window.location.href = 'admin_live_room.html';
+                });
+            });
+        }
+
+        renderAdminDashboard();
+        ConsultantSync.subscribe(renderAdminDashboard);
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Live Room | Consultant Doctor</title>
+    <link rel="shortcut icon" href="./logo copy.png" type="image/x-icon">
+    <link rel="stylesheet" href="live_room.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="medical-logo"></div>
+                <span class="logo-text">Consultant <strong>Doctor</strong></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="patient-info.html" class="active">Live Room</a>
+                <a href="contact.html">Connect</a>
+                <a href="about_us.html">About Us</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="btn-dark-pill">Admin Portal</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="liveroom-section">
+        <div class="bg-dots"></div>
+
+        <div class="container">
+            <div class="stepper">
+                <div class="step-item done">
+                    <span class="step-circle"><i class="fa-solid fa-check"></i></span>
+                    <span>1. Patient Info</span>
+                </div>
+                <div class="step-line done"></div>
+                <div class="step-item done">
+                    <span class="step-circle"><i class="fa-solid fa-check"></i></span>
+                    <span>2. KPay Payment</span>
+                </div>
+                <div class="step-line done"></div>
+                <div class="step-item active">
+                    <span class="step-circle">3</span>
+                    <span>3. Live Room</span>
+                </div>
+            </div>
+
+            <div class="patient-banner">
+                <div class="patient-identity">
+                    <div class="patient-avatar" id="patientAvatar">PT</div>
+                    <div>
+                        <div class="title-line">
+                            <h1 id="patientDisplayName">Patient</h1>
+                            <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> KPay Verified (10,000 MMK)</span>
+                        </div>
+                        <p id="patientDisplayPhone" class="mono">Phone: 09xxxxxxxxx • Consulting with Dr. La Yaung</p>
+                    </div>
+                </div>
+                <div class="doctor-live-tag">
+                    <span class="pulse-dot"></span>
+                    <span>Dr. La Yaung Available</span>
+                </div>
+            </div>
+
+            <div class="room-grid">
+                <div class="panel-card call-panel">
+                    <div class="panel-top">
+                        <div>
+                            <h2>Video &amp; Phone Consultation</h2>
+                            <p>ဆရာဝန်နှင့် Video Call သို့မဟုတ် Phone Call ဖြင့် ဆွေးနွေးပါ</p>
+                        </div>
+                        <span class="call-status" id="callStatusPill">
+                            <i class="fa-solid fa-circle-dot"></i>
+                            <span id="callTimer">Standby</span>
+                        </span>
+                    </div>
+
+                    <div class="video-stage">
+                        <video id="remoteVideo" autoplay playsinline></video>
+
+                        <div class="stage-placeholder" id="stagePlaceholder">
+                            <div class="icon-ring" id="iconRing">
+                                <i class="fa-solid fa-user-doctor"></i>
+                            </div>
+                            <h3 id="placeholderTitle">Dr. La Yaung is Ready</h3>
+                            <p id="placeholderDesc">Video Call သို့မဟုတ် Phone Call ခလုတ်ကို နှိပ်၍ ခေါ်ဆိုနိုင်ပါသည်</p>
+                        </div>
+
+                        <div class="pip-preview" id="pipPreview">
+                            <video id="localVideo" autoplay muted playsinline></video>
+                            <span class="pip-tag">You (Patient)</span>
+                        </div>
+                    </div>
+
+                    <div class="call-actions">
+                        <button type="button" class="action-btn video" id="btnVideoCall">
+                            <i class="fa-solid fa-video"></i>
+                            <span>Video Call</span>
+                        </button>
+                        <button type="button" class="action-btn phone" id="btnPhoneCall">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>Phone Call</span>
+                        </button>
+                        <button type="button" class="action-btn" id="btnMic" disabled>
+                            <i class="fa-solid fa-microphone"></i>
+                            <span>Mic On</span>
+                        </button>
+                        <button type="button" class="action-btn" id="btnCam" disabled>
+                            <i class="fa-solid fa-camera"></i>
+                            <span>Cam On</span>
+                        </button>
+                        <button type="button" class="action-btn end" id="btnEndCall" disabled>
+                            <i class="fa-solid fa-phone-slash"></i>
+                            <span>End Call</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel-card chat-panel">
+                    <div class="panel-top">
+                        <div>
+                            <h2>Doctor Chat Box</h2>
+                            <p>လက္ခဏာများနှင့် မေးခွန်းများ ရေးသားပို့ပေးပါ</p>
+                        </div>
+                        <span class="private-pill"><i class="fa-solid fa-lock"></i> Private</span>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages"></div>
+
+                    <div class="quick-chips">
+                        <button type="button" class="chip-btn" data-msg="မင်္ဂလာပါ ဆရာ။ ဖျားနေလို့ ဆွေးနွေးလိုပါတယ်။">ဖျားနေပါတယ်</button>
+                        <button type="button" class="chip-btn" data-msg="ခေါင်းကိုက်ပြီး မူးဝေနေပါတယ် ဆရာ။">ခေါင်းကိုက်/မူးဝေ</button>
+                        <button type="button" class="chip-btn" data-msg="ဆေးညွှန်းလေး ပြန်ချပေးပါ ဆရာ။">ဆေးညွှန်းမေးရန်</button>
+                    </div>
+
+                    <form class="chat-form" id="chatForm">
+                        <input type="text" id="chatInput" placeholder="Write your message to Dr. La Yaung..." autocomplete="off" required>
+                        <button type="submit" class="btn-send" aria-label="Send message">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="consultant-sync.js"></script>
+    <script src="patient-live-room.js"></script>
+</body>
+</html>

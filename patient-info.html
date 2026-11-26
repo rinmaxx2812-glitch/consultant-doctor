@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information | Consultant Doctor</title>
+    <link rel="shortcut icon" href="./logo copy.png" type="image/x-icon">
+    <link rel="stylesheet" href="patient-info.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="medical-logo"></div>
+                <span class="logo-text">Consultant <strong>Doctor</strong></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="patient-info.html" class="active">Live Room</a>
+                <a href="contact.html">Connect</a>
+                <a href="about_us.html">About Us</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="btn-dark-pill">Admin Portal</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="intake-section">
+        <div class="bg-dots"></div>
+
+        <div class="container intake-container">
+            <div class="stepper">
+                <div class="step-item active">
+                    <span class="step-circle">1</span>
+                    <span>1. Patient Info</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item">
+                    <span class="step-circle">2</span>
+                    <span>2. KPay Payment</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item">
+                    <span class="step-circle">3</span>
+                    <span>3. Live Room</span>
+                </div>
+            </div>
+
+            <div class="intake-card">
+                <div class="card-top">
+                    <span class="badge-tag"><i class="fa-solid fa-user-plus"></i> Step 1 of 3 • Patient Details</span>
+                    <h1>Enter Your <strong>Information</strong></h1>
+                    <p>ဆရာဝန်နှင့် တိုက်ရိုက်ဆွေးနွေးနိုင်ရန် လူနာ၏ အမည်နှင့် ဖုန်းနံပါတ်ကို မှန်ကန်စွာ ထည့်သွင်းပြီး နောက်တစ်ဆင့်သို့ သွားပါ။</p>
+                </div>
+
+                <form id="patientInfoForm" class="intake-form">
+                    <div class="form-group">
+                        <label for="patientName">Patient Name (လူနာအမည်)</label>
+                        <div class="input-box">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="patientName" name="patientName" placeholder="Enter your full name" autocomplete="name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="patientPhone">Phone Number (ဖုန်းနံပါတ်)</label>
+                        <div class="input-box">
+                            <i class="fa-solid fa-phone"></i>
+                            <input type="tel" id="patientPhone" name="patientPhone" placeholder="e.g. 09688439797" autocomplete="tel" required>
+                        </div>
+                        <small class="hint-text">ဆက်သွယ်ရန်နှင့် Admin မှတ်တမ်းအတွက် မှန်ကန်သော ဖုန်းနံပါတ်ကို ထည့်သွင်းပါ။</small>
+                    </div>
+
+                    <div class="summary-strip">
+                        <div>
+                            <span>Consultation Fee</span>
+                            <strong>10,000 MMK (KPay)</strong>
+                        </div>
+                        <span class="fee-tag"><i class="fa-solid fa-shield-check"></i> Next: Payment</span>
+                    </div>
+
+                    <div id="formAlert" class="form-alert" role="alert"></div>
+
+                    <button type="submit" class="btn-next">
+                        <span>Next to KPay Payment</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ================= FOOTER ================= -->
+    <footer id="connect" class="footer">
+        <div class="container footer-grid">
+            <!-- Column 1: Logo & About -->
+            <div class="footer-brand">
+                <a href="#home" class="logo">
+                     <div class="medical-logo"></div>
+                       <span class="logo-text">Consultant <strong>Doctor</strong></span>
+                </a>
+                <p class="footer-desc">
+                    လူနာများနှင့် ဆရာဝန်များအကြား လွယ်ကူမြန်ဆန်စွာ အွန်လိုင်းမှတစ်ဆင့် ဆေးဝါးကုသမှုနှင့် အကြံဉာဏ်များ ရယူနိုင်ရန် ဝန်ဆောင်မှုပေးနေပါသည်။
+                </p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="patient-info.html">Live Room</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact & Address -->
+            <div class="footer-contact">
+                <h4>Contact & Address</h4>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Shwegondaing street, Bahan Township,Yangon</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+95 9 943 415 764</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>layaung287042@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container bottom-flex">
+                <p>&copy; 2026 Consultant Doctor. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="viber://chat?number=959943415764" aria-label="Viber"><i class="fa-brands fa-viber"></i></a>
+                    <a href="http://t.me/@layaung_48" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="consultant-sync.js"></script>
+    <script>
+        const patientInfoForm = document.getElementById('patientInfoForm');
+        const nameInput = document.getElementById('patientName');
+        const phoneInput = document.getElementById('patientPhone');
+        const formAlert = document.getElementById('formAlert');
+
+        // Pre-fill if returning
+        const existing = ConsultantSync.getCurrentPatient();
+        if (existing) {
+            nameInput.value = existing.name || '';
+            phoneInput.value = existing.phone || '';
+        }
+
+        patientInfoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = nameInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const cleanDigits = phone.replace(/[\s\-+]/g, '');
+
+            if (name.length < 2) {
+                formAlert.className = 'form-alert error';
+                formAlert.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> လူနာအမည်ကို ပြည့်စုံစွာ ထည့်သွင်းပေးပါ။';
+                return;
+            }
+
+            if (cleanDigits.length < 7) {
+                formAlert.className = 'form-alert error';
+                formAlert.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> မှန်ကန်သော ဖုန်းနံပါတ်ကို ထည့်သွင်းပေးပါ။';
+                return;
+            }
+
+            ConsultantSync.registerPatient(name, phone);
+            window.location.href = 'payment.html';
+        });
+    </script>
+</body>
+</html>

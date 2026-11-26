@@ -1,0 +1,417 @@
+/* ================= VARIABLES & RESET ================= */
+:root {
+    --bg-white: #ffffff;
+    --bg-soft: #f8fafc;
+    --text-dark: #111827;
+    --text-muted: #6b7280;
+    --primary-blue: #0088ff;
+    --primary-blue-hover: #0070d6;
+    --dark-pill: #111827;
+    --border-light: #e5e7eb;
+    --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #caf0f8;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ================= HEADER / NAVBAR ================= */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.nav-container {
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 1.3rem;
+}
+
+
+/* Pure CSS Medical Logo */
+.medical-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #84d2cf; /* အတွင်းပိုင်း စိမ်းပြာရောင် (Teal) */
+    border: 3px solid #16325c;  /* အပြင်ဆုံး အပြာရင့်ရောင် လိုင်း (Navy Blue) */
+    box-shadow: inset 0 0 0 3px #ffffff; /* အပြာရင့်လိုင်းနှင့် အတွင်းစက်ဝိုင်းကြား အဖြူရောင်ကွက်လပ် */
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* အဖြူရောင် အပေါင်းလက္ခဏာ (Cross) - ဒေါင်လိုက်တန်း */
+.medical-logo::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 22px;
+    background-color: #ffffff;
+}
+
+/* အဖြူရောင် အပေါင်းလက္ခဏာ (Cross) - အလျားလိုက်တန်း */
+.medical-logo::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 8px;
+    background-color: #ffffff;
+}
+
+.logo-text strong {
+    font-weight: 800;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+/* Dark Pill Button (Right Header) */
+.btn-dark-pill {
+    background-color: #023e8a;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    display: inline-block;
+}
+
+.btn-dark-pill:hover {
+    background-color: #0088ff;
+    transform: translateY(-2px);
+}
+
+/* ================= HERO SECTION ================= */
+.hero-section {
+    position: relative;
+    padding: 70px 0 90px;
+    min-height: calc(100vh - 88px);
+    display: flex;
+    align-items: center;
+}
+
+/* Subtle Contour Background Lines matching reference */
+.bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.45;
+    z-index: -1;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 48px;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 14px;
+}
+
+.hero-title {
+    font-size: 3.6rem;
+    line-height: 1.15;
+    margin-bottom: 22px;
+    letter-spacing: -0.02em;
+}
+
+.hero-title .light-text {
+    font-weight: 300;
+    color: #1f2937;
+}
+
+.hero-title .bold-text {
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.hero-description {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin-bottom: 36px;
+    line-height: 40px;
+}
+
+/* Hero Buttons (Pill Style matching reference) */
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-primary-pill {
+    background-color: #023e8a;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 32px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(0, 136, 255, 0.28);
+    transition: all 0.25s ease;
+}
+
+.btn-primary-pill:hover {
+    background-color: var(--primary-blue-hover);
+    transform: translateY(-2px);
+}
+
+/* Right Image Side */
+.hero-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.image-card {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+}
+
+.image-card img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    border-radius: 32px;
+    box-shadow: var(--shadow-soft);
+}
+
+.floating-badge {
+    position: absolute;
+    bottom: 24px;
+    left: -20px;
+    background: #ffffff;
+    padding: 14px 20px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.pulse-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+}
+
+.floating-badge strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.floating-badge small {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+
+/* ================= FOOTER ================= */
+.footer {
+    background-color: var(--bg-soft);
+    border-top: 1px solid var(--border-light);
+    padding-top: 64px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 1.2fr;
+    gap: 48px;
+    padding-bottom: 48px;
+}
+
+.footer-desc {
+    margin-top: 16px;
+    color: black;
+    font-size: 0.9rem;
+    max-width: 340px;
+    line-height: 35px;
+}
+
+.footer h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: var(--text-dark);
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.92rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #0077b6;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    color: black;
+    font-size: 0.92rem;
+}
+
+.footer-contact i {
+    color: #023e8a;
+    margin-top: 4px;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-light);
+    padding: 20px 0;
+}
+
+.bottom-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    font-size: 0.88rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 14px;
+}
+
+.social-links a {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid var(--border-light);
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.social-links a:hover {
+    background-color: #0077b6;
+    color: #ffffff;
+    border-color: #0077b6;
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+@media (max-width: 960px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-description {
+        margin: 0 auto 32px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .floating-badge {
+        left: 16px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 720px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}

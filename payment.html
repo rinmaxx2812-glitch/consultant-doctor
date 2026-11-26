@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPay Payment | Consultant Doctor</title>
+    <link rel="shortcut icon" href="./logo copy.png" type="image/x-icon">
+    <link rel="stylesheet" href="payment.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="medical-logo"></div>
+                <span class="logo-text">Consultant <strong>Doctor</strong></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="patient-info.html" class="active">Live Room</a>
+                <a href="contact.html">Connect</a>
+                <a href="about_us.html">About Us</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="btn-dark-pill">Admin Portal</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="payment-section">
+        <div class="bg-dots"></div>
+
+        <div class="container payment-container">
+            <div class="stepper">
+                <div class="step-item done">
+                    <span class="step-circle"><i class="fa-solid fa-check"></i></span>
+                    <span>1. Patient Info</span>
+                </div>
+                <div class="step-line active"></div>
+                <div class="step-item active">
+                    <span class="step-circle">2</span>
+                    <span>2. KPay Payment</span>
+                </div>
+                <div class="step-line" id="stepLine23"></div>
+                <div class="step-item" id="step3Item">
+                    <span class="step-circle">3</span>
+                    <span>3. Live Room</span>
+                </div>
+            </div>
+
+            <div class="payment-grid">
+                <div class="kpay-card">
+                    <span class="card-badge"><i class="fa-solid fa-mobile-screen-button"></i> KBZPay Transfer</span>
+                    <h2>Consultation Fee</h2>
+                    <p class="card-sub">Patient: <strong id="payPatientName">Patient</strong> (<span id="payPatientPhone" class="mono">09xxxxxxxxx</span>)</p>
+
+                    <div class="kpay-box">
+                        <div class="kpay-row">
+                            <span>Payment Method</span>
+                            <strong>KPay</strong>
+                        </div>
+                        <div class="kpay-row">
+                            <span>KPay Number</span>
+                            <div class="number-copy">
+                                <strong class="mono" id="kpayNumber">09688439797</strong>
+                                <button type="button" class="copy-btn" id="copyBtn">
+                                    <i class="fa-regular fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                        <div class="kpay-row">
+                            <span>Account Name</span>
+                            <strong>MG Kaung</strong>
+                        </div>
+                        <div class="kpay-row">
+                            <span>Consultation Fee</span>
+                            <strong class="amount">10,000 MMK</strong>
+                        </div>
+                    </div>
+
+                    <div class="note-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Admin ဘက်မှ Payment Screenshot ကို စစ်ဆေးပြီး လက်ခံအတည်ပြုမှသာ Live Room ထဲသို့ ဝင်ရောက်နိုင်ပါမည်။</span>
+                    </div>
+                </div>
+
+                <div class="upload-card">
+                    <span class="card-badge"><i class="fa-solid fa-cloud-arrow-up"></i> Proof of Payment</span>
+                    <h2>Upload KPay Screenshot</h2>
+                    <p class="card-sub">ငွေလွှဲပြေစာ Screenshot ပုံကို ရွေးချယ်ပြီး ပေးပို့ပါ။</p>
+
+                    <form id="paymentForm">
+                        <label for="screenshotInput" class="upload-box" id="uploadBox">
+                            <i class="fa-solid fa-image"></i>
+                            <strong>Click to choose KPay screenshot</strong>
+                            <small>PNG, JPG, WEBP supported</small>
+                            <input type="file" id="screenshotInput" accept="image/*" hidden>
+                        </label>
+
+                        <div class="preview-box" id="previewBox">
+                            <img id="previewImg" src="" alt="Screenshot Preview">
+                            <button type="button" class="remove-img-btn" id="removeImgBtn">
+                                <i class="fa-solid fa-xmark"></i> Remove
+                            </button>
+                        </div>
+
+                        <div id="statusBanner" class="status-banner" role="status"></div>
+
+                        <button type="submit" class="btn-primary-pill" id="submitPaymentBtn">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Payment Screenshot
+                        </button>
+
+                        <button type="button" class="btn-liveroom-locked" id="enterLiveRoomBtn" disabled>
+                            <i class="fa-solid fa-lock"></i> Live Room Locked (Waiting for Admin Approval)
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="medical-logo"></div>
+                    <span class="logo-text">Consultant <strong>Doctor</strong></span>
+                </a>
+                <p class="footer-desc">
+                    လူနာများနှင့် ဆရာဝန်များအကြား လွယ်ကူမြန်ဆန်စွာ အွန်လိုင်းမှတစ်ဆင့် ဆေးဝါးကုသမှုနှင့် အကြံဉာဏ်များ ရယူနိုင်ရန် ဝန်ဆောင်မှုပေးနေပါသည်။
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="patient-info.html">Live Room</a></li>
+                    <li><a href="contact.html">Connect</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact &amp; Address</h4>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Shwegondaing street, Bahan Township,Yangon</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+95 9 943 415 764</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>layaung287042@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container bottom-flex">
+                <p>&copy; 2026 Consultant Doctor. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="viber://chat?number=959943415764" aria-label="Viber"><i class="fa-brands fa-viber"></i></a>
+                    <a href="http://t.me/@layaung_48" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="consultant-sync.js"></script>
+    <script>
+        let currentPatient = ConsultantSync.getCurrentPatient();
+        if (!currentPatient) {
+            currentPatient = ConsultantSync.registerPatient('Guest Patient', '09688439797');
+        }
+
+        document.getElementById('payPatientName').textContent = currentPatient.name;
+        document.getElementById('payPatientPhone').textContent = currentPatient.phone;
+
+        const copyBtn = document.getElementById('copyBtn');
+        const kpayNumber = document.getElementById('kpayNumber').textContent.trim();
+        const screenshotInput = document.getElementById('screenshotInput');
+        const uploadBox = document.getElementById('uploadBox');
+        const previewBox = document.getElementById('previewBox');
+        const previewImg = document.getElementById('previewImg');
+        const removeImgBtn = document.getElementById('removeImgBtn');
+        const paymentForm = document.getElementById('paymentForm');
+        const statusBanner = document.getElementById('statusBanner');
+        const enterLiveRoomBtn = document.getElementById('enterLiveRoomBtn');
+        // const GOOGLE_MEET_URL = 'https://meet.google.com/dfe-xdrp-mvc';
+
+        // if (enterLiveRoomBtn) {
+        //     enterLiveRoomBtn.addEventListener('click', () => {
+        //         window.open(GOOGLE_MEET_URL, '_blank', 'noopener,noreferrer');
+        //     });
+        // }
+        const stepLine23 = document.getElementById('stepLine23');
+        const step3Item = document.getElementById('step3Item');
+
+        let uploadedDataUrl = currentPatient.screenshotDataUrl || '';
+
+        if (uploadedDataUrl) {
+            previewImg.src = uploadedDataUrl;
+            previewBox.classList.add('has-image');
+            uploadBox.style.display = 'none';
+        }
+
+        function syncPaymentUI() {
+            const latest = ConsultantSync.getCurrentPatient() || currentPatient;
+            if (latest.paymentStatus === 'pending') {
+                statusBanner.className = 'status-banner pending';
+                statusBanner.innerHTML = '<i class="fa-solid fa-hourglass-half"></i> Screenshot ပို့ပြီးပါပြီ။ Admin ဘက်မှ ငွေလက်ခံအတည်ပြုရန် စောင့်ဆိုင်းနေပါသည်...';
+                enterLiveRoomBtn.disabled = true;
+                enterLiveRoomBtn.classList.remove('unlocked');
+                enterLiveRoomBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Live Room Locked (Waiting for Admin Approval)';
+            } else if (latest.paymentStatus === 'approved') {
+                statusBanner.className = 'status-banner approved';
+                statusBanner.innerHTML = '<i class="fa-solid fa-circle-check"></i> Payment Approved! Admin မှ ငွေလက်ခံအတည်ပြုပြီးပါပြီ။ Live Room သို့ ဝင်ရောက်နိုင်ပါပြီ။';
+                enterLiveRoomBtn.disabled = false;
+                enterLiveRoomBtn.classList.add('unlocked');
+                enterLiveRoomBtn.innerHTML = '<i class="fa-solid fa-video"></i> Enter Live Consultation Room';
+                stepLine23.classList.add('active');
+                step3Item.classList.add('active');
+            } else if (latest.paymentStatus === 'rejected') {
+                statusBanner.className = 'status-banner pending';
+                statusBanner.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Screenshot ကို Admin မှ ပယ်ချထားပါသည်။ မှန်ကန်သော ပြေစာပုံကို ထပ်မံတင်ပေးပါ။';
+                enterLiveRoomBtn.disabled = true;
+                enterLiveRoomBtn.classList.remove('unlocked');
+                enterLiveRoomBtn.innerHTML = '<i class="fa-solid fa-lock"></i> Live Room Locked';
+            }
+        }
+
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(kpayNumber);
+            copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+            setTimeout(() => {
+                copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
+            }, 1800);
+        });
+
+        screenshotInput.addEventListener('change', () => {
+            const file = screenshotInput.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                uploadedDataUrl = e.target.result;
+                previewImg.src = uploadedDataUrl;
+                previewBox.classList.add('has-image');
+                uploadBox.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        });
+
+        removeImgBtn.addEventListener('click', () => {
+            uploadedDataUrl = '';
+            screenshotInput.value = '';
+            previewImg.src = '';
+            previewBox.classList.remove('has-image');
+            uploadBox.style.display = 'flex';
+        });
+
+        paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!uploadedDataUrl) {
+                statusBanner.className = 'status-banner pending';
+                statusBanner.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ကျေးဇူးပြု၍ KPay Screenshot ပုံကို အရင်ရွေးချယ်ပေးပါ။';
+                return;
+            }
+            ConsultantSync.submitPaymentScreenshot(currentPatient.id, uploadedDataUrl);
+            syncPaymentUI();
+        });
+
+        enterLiveRoomBtn.addEventListener('click', () => {
+            const latest = ConsultantSync.getCurrentPatient();
+            if (latest && latest.paymentStatus === 'approved') {
+                window.location.href = 'live_room.html';
+            }
+        });
+
+        syncPaymentUI();
+        ConsultantSync.subscribe(syncPaymentUI);
+    </script>
+</body>
+</html>

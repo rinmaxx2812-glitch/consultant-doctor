@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Consultation Room | Consultant Doctor</title>
+    <link rel="shortcut icon" href="./logo copy.png" type="image/x-icon">
+    <link rel="stylesheet" href="admin_live_room.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="room-wrapper">
+        <!-- ================= TOP BAR ================= -->
+        <header class="room-header">
+            <div class="brand-area">
+                <a href="admin.html" class="back-btn" title="Back to Dashboard">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div class="medical-logo"></div>
+                <div>
+                    <h1>Consultant <strong>Doctor</strong></h1>
+                    <span class="sub-label">Admin Live Consultation &amp; Chat Workspace</span>
+                </div>
+            </div>
+
+            <div class="header-status">
+                <div class="doctor-badge">
+                    <span class="online-dot"></span>
+                    <span>Dr. La Yaung (Admin)</span>
+                </div>
+                <a href="admin.html" class="btn-outline">
+                    <i class="fa-solid fa-table-columns"></i> Dashboard
+                </a>
+            </div>
+        </header>
+
+        <!-- ================= MAIN 3-COLUMN WORKSPACE ================= -->
+        <main class="workspace-grid">
+            
+            <!-- COLUMN 1: APPROVED PATIENTS LIST -->
+            <aside class="panel patients-sidebar">
+                <div class="panel-head">
+                    <h2>Approved Patients</h2>
+                    <span class="pill-count" id="approvedCount">0 Approved</span>
+                </div>
+                <p class="panel-note">Payment approved patients only</p>
+
+                <div class="patient-list" id="patientList"></div>
+            </aside>
+
+            <!-- COLUMN 2: VIDEO & PHONE CALL STAGE -->
+            <section class="panel call-stage-panel">
+                <div class="stage-topbar">
+                    <div class="active-patient-meta">
+                        <h2 id="activePatientName">Select a Patient</h2>
+                        <span id="activePatientPhone">KPay Verified (10,000 MMK)</span>
+                    </div>
+                    <div class="call-timer-badge" id="callStatusBadge">
+                        <i class="fa-solid fa-circle-dot"></i>
+                        <span id="callTimerText">Standby</span>
+                    </div>
+                </div>
+
+                <!-- Video Display Box -->
+                <div class="video-container" id="videoContainer">
+                    <!-- Remote Patient Video -->
+                    <video id="remoteVideo" autoplay playsinline></video>
+
+                    <!-- Placeholder when waiting / Voice Call mode -->
+                    <div class="stage-placeholder" id="stagePlaceholder">
+                        <div class="placeholder-icon" id="placeholderIcon">
+                            <i class="fa-solid fa-user-injured"></i>
+                        </div>
+                        <h3 id="placeholderTitle">Waiting to Start Call</h3>
+                        <p id="placeholderSub">Click "Video Call" or "Phone Call" below to connect with the patient</p>
+                    </div>
+
+                    <!-- Doctor Local Self-View (Picture-in-Picture) -->
+                    <div class="pip-box" id="pipBox">
+                        <video id="localVideo" autoplay muted playsinline></video>
+                        <span class="pip-label">Dr. La Yaung (You)</span>
+                    </div>
+                </div>
+
+                <!-- Call Control Bar -->
+                <div class="controls-bar">
+                    <button type="button" class="ctrl-btn primary-video" id="btnVideoCall">
+                        <i class="fa-solid fa-video"></i>
+                        <span>Video Call</span>
+                    </button>
+
+                    <button type="button" class="ctrl-btn primary-audio" id="btnPhoneCall">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Phone Call</span>
+                    </button>
+
+                    <button type="button" class="ctrl-btn" id="btnToggleMic" disabled>
+                        <i class="fa-solid fa-microphone"></i>
+                        <span>Mic On</span>
+                    </button>
+
+                    <button type="button" class="ctrl-btn" id="btnToggleCam" disabled>
+                        <i class="fa-solid fa-camera"></i>
+                        <span>Cam On</span>
+                    </button>
+
+                    <button type="button" class="ctrl-btn danger" id="btnEndCall" disabled>
+                        <i class="fa-solid fa-phone-slash"></i>
+                        <span>End Call</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- COLUMN 3: CONSULTATION CHAT BOX -->
+            <section class="panel chat-panel">
+                <div class="panel-head">
+                    <div>
+                        <h2>Live Chat Box</h2>
+                        <span class="chat-sub" id="chatTargetLabel">No patient selected</span>
+                    </div>
+                    <span class="secure-tag"><i class="fa-solid fa-lock"></i> Private</span>
+                </div>
+
+                <!-- Messages Feed -->
+                <div class="chat-feed" id="chatFeed"></div>
+
+                <!-- Quick Doctor Replies -->
+                <div class="quick-replies">
+                    <button type="button" class="quick-chip" data-quick="မင်္ဂလာပါ။ လက်ရှိခံစားနေရတဲ့ လက္ခဏာတွေကို အသေးစိတ်ပြောပြပေးပါ။">လက္ခဏာမေးရန်</button>
+                    <button type="button" class="quick-chip" data-quick="အဖျားဘယ်လောက်ရှိလဲ၊ ဆေးသောက်ထားတာ ရှိပါသလား။">အဖျား/ဆေးမှတ်တမ်း</button>
+                    <button type="button" class="quick-chip" data-quick="ဆေးညွှန်းရေးပေးပါမယ်။ ဓာတ်မတည့်တဲ့ဆေး ရှိပါသလား။">ဆေးညွှန်း</button>
+                </div>
+
+                <!-- Message Input Form -->
+                <form class="chat-form" id="chatForm">
+                    <input 
+                        type="text" 
+                        id="chatInput" 
+                        placeholder="Type message or prescription..." 
+                        autocomplete="off" 
+                        required
+                    >
+                    <button type="submit" class="send-btn" aria-label="Send message">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Load ConsultantSync BEFORE admin-consultation.js -->
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="consultant-sync.js"></script>
+    <script src="admin-consultation.js"></script>
+</body>
+</html>
